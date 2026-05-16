@@ -13,7 +13,6 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
         'AIを活用したギター評価・鑑定アプリケーション。ギターの価値を客観的に分析し、コレクターと愛好家をサポートする革新的なツールを開発中です。',
       image:
         'https://images.unsplash.com/photo-1761596993052-1a5991a52c3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwZ3VpdGFyJTIwd29vZCUyMGdyYWluJTIwY2xvc2UlMjB1cHxlbnwxfHx8fDE3NzE5NDQxNzV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      status: '鋭意作成中',
     },
     {
       id: 2,
@@ -22,7 +21,6 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
         '文化財級のギターの保護と運用をサポートするサービス。専門知識と最新テクノロジーを組み合わせた、包括的な資産管理を提供します。',
       image:
         'https://images.unsplash.com/photo-1696245843980-79b69e076ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0d28lMjBhY291c3RpYyUyMGd1aXRhcnMlMjBkYXJrJTIwbW9vZHl8ZW58MXx8fHwxNzcxOTQ0MTc1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-      status: 'サービス提供中',
     },
     {
       id: 3,
@@ -31,7 +29,6 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
         'ギターの育成と価値の観測プログラム。時間とともに変化する楽器の特性を記録し、その成長プロセスをドキュメント化します。最初のサンプルとして、4本のMartin Guitarの観測を実施中。',
       image:
         'https://images.unsplash.com/photo-1660006417074-91711e3ff86c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY291c3RpYyUyMGd1aXRhciUyMHdvcmtzaG9wJTIwY3JhZnRzbWFuc2hpcHxlbnwxfHx8fDE3NzE5NDQxNzR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      status: '観測中',
     },
   ];
 
@@ -130,16 +127,6 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
                     transition={{ duration: 0.8 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-                  <motion.div
-                    className="absolute top-4 right-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-800"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                  >
-                    {item.status}
-                  </motion.div>
                 </div>
 
                 {/* Content */}

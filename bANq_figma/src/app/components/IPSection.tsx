@@ -116,18 +116,6 @@ export function IPSection({ onReadMore }: IPSectionProps = {}) {
                     transition={{ duration: 0.8 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-                  {item.badge && (
-                    <motion.div
-                      className="absolute top-4 right-4 px-4 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium tracking-wider uppercase text-gray-800"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                    >
-                      {item.badge}
-                    </motion.div>
-                  )}
                 </div>
 
                 {/* Content */}
