@@ -27,7 +27,6 @@ export const newsArticles: Article[] = [
       {
         type: 'paragraph',
         text: '本プロジェクトは、音楽を“完成品”としてではなく、運用される資産として扱う最初の実践となります。',
-        emphasis: true,
       },
     ],
   },
@@ -55,7 +54,6 @@ export const newsArticles: Article[] = [
       {
         type: 'paragraph',
         text: 'bANq はその両方を扱い、継続的な関与を通じて価値を運用していきます。',
-        emphasis: true,
       },
       {
         type: 'note',

@@ -101,7 +101,7 @@ export const journalArticles: Article[] = [
       { type: 'heading', level: 3, text: '『まとめ』' },
       { type: 'paragraph', text: 'ギターは、完成品として手に入るものでもあります。' },
       { type: 'paragraph', text: 'しかし同時に、時間とともに変化していく楽器でもあります。' },
-      { type: 'paragraph', emphasis: true, text: 'もしかすると私たちは、ギターを「弾いている」のではなく、その成長のプロセスに少しだけ関わっているのかもしれません。' },
+      { type: 'paragraph', text: 'もしかすると私たちは、ギターを「弾いている」のではなく、その成長のプロセスに少しだけ関わっているのかもしれません。' },
     ],
   },
   {
@@ -127,7 +127,7 @@ export const journalArticles: Article[] = [
       { type: 'paragraph', text: 'しかし、その価値は決して曖昧なものではありません。時間の中で確かに存在し、変化し続けています。' },
       { type: 'paragraph', text: 'もしそうであるならば、その価値を観測し、記録し、理解するという視点があってもよいのかもしれません。' },
       { type: 'paragraph', text: '音楽、アート、デザイン、そして楽器。' },
-      { type: 'paragraph', emphasis: true, text: 'bANq はそれらが持つ価値を時間の中でどのように生まれ、変化していくのかを見つめていくための場です。' },
+      { type: 'paragraph', text: 'bANq はそれらが持つ価値を時間の中でどのように生まれ、変化していくのかを見つめていくための場です。' },
     ],
   },
 ];
