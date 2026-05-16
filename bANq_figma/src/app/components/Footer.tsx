@@ -117,18 +117,10 @@ export function Footer({ setCurrentPage }: FooterProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-sm tracking-[0.2em] uppercase mb-6 font-medium">Contact</h3>
-            <ul className="space-y-4 text-white/70 font-light">
-              <li>
-                <motion.a 
-                  href="mailto:info@banq-llc.com" 
-                  className="hover:text-white transition-colors duration-300"
-                  whileHover={{ x: 5 }}
-                >
-                  info@banq-llc.com
-                </motion.a>
-              </li>
-              <li>〒150-0000</li>
-              <li>東京都渋谷区</li>
+            <ul className="space-y-2 text-white/70 font-light leading-relaxed">
+              <li>〒104-0061</li>
+              <li>東京都中央区銀座1丁目12番4号</li>
+              <li>N&amp;E BLD. 6F</li>
             </ul>
           </motion.div>
         </div>

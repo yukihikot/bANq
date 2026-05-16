@@ -1,5 +1,5 @@
 import type { Article } from './types';
-import news1Image from '../../assets/news/news1.png';
+import news1Image from '../../assets/news/news1.jpg';
 import news2Image from '../../assets/news/news2.jpg';
 
 export const newsArticles: Article[] = [

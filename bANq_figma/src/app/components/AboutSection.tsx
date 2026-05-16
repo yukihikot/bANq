@@ -5,13 +5,7 @@ interface AboutSectionProps {
   onViewMore?: () => void;
 }
 
-export function AboutSection({ isPreview = false, onViewMore }: AboutSectionProps) {
-  const stats = [
-    { value: "50+", label: "Guitars", delay: 0.2 },
-    { value: "1930s", label: "Since", delay: 0.4 },
-    { value: "10+", label: "Artists", delay: 0.6 },
-  ];
-
+export function AboutSection(_props: AboutSectionProps = {}) {
   return (
     <section className="py-32 md:py-40 px-8 lg:px-16 bg-gradient-to-b from-white via-blue-50/15 to-purple-50/20 relative overflow-hidden">
       {/* Animated Background Gradient */}
@@ -201,54 +195,10 @@ export function AboutSection({ isPreview = false, onViewMore }: AboutSectionProp
                 <p className="text-lg font-light leading-relaxed text-gray-600 italic mb-4">
                   Our mission is not to consume value, but to steward it and carry it forward.
                 </p>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-gray-200">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: stat.delay, type: "spring", stiffness: 100 }}
-                      whileHover={{ scale: 1.1, y: -5 }}
-                    >
-                      <motion.div 
-                        className="text-4xl font-light mb-2"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                      >
-                        {stat.value}
-                      </motion.div>
-                      <div className="text-sm text-gray-500 tracking-wide">{stat.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
-
-        {/* View More Button for Preview Mode */}
-        {isPreview && onViewMore && (
-          <motion.div 
-            className="mt-20 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.button 
-              onClick={onViewMore}
-              className="px-10 py-4 bg-black text-white text-[15px] font-medium tracking-wider rounded-full shadow-xl"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              もっと詳しく見る
-            </motion.button>
-          </motion.div>
-        )}
       </div>
     </section>
   );

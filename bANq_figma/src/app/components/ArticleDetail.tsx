@@ -1,11 +1,20 @@
 import { motion } from 'motion/react';
 import type { Article, ArticleBlock } from '../data/types';
 
+export type ArticleKind = 'news' | 'journal' | 'ip' | 'cp';
+
 interface ArticleDetailProps {
   article: Article;
-  kind: 'news' | 'journal';
+  kind: ArticleKind;
   onBack: () => void;
 }
+
+const backLabel: Record<ArticleKind, string> = {
+  news: 'News 一覧へ戻る',
+  journal: 'Journal 一覧へ戻る',
+  ip: 'IP セクションへ戻る',
+  cp: 'CP セクションへ戻る',
+};
 
 function renderBlock(block: ArticleBlock, idx: number) {
   switch (block.type) {
@@ -36,7 +45,10 @@ function renderBlock(block: ArticleBlock, idx: number) {
       );
     case 'list':
       return (
-        <ul key={idx} className="my-6 space-y-3 list-disc list-inside text-base md:text-lg text-gray-700 font-light">
+        <ul
+          key={idx}
+          className="my-6 space-y-3 list-disc list-inside text-base md:text-lg text-gray-700 font-light"
+        >
           {block.items.map((item, i) => (
             <li key={i} className="leading-relaxed">
               {item}
@@ -55,7 +67,10 @@ function renderBlock(block: ArticleBlock, idx: number) {
       );
     case 'divider':
       return (
-        <div key={idx} className="flex justify-center my-10 text-gray-400 tracking-widest text-sm">
+        <div
+          key={idx}
+          className="flex justify-center my-10 text-gray-400 tracking-widest text-sm"
+        >
           ↓↓↓
         </div>
       );
@@ -67,6 +82,39 @@ function renderBlock(block: ArticleBlock, idx: number) {
         >
           ※ {block.text}
         </p>
+      );
+    case 'table':
+      return (
+        <div key={idx} className="my-10 overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="border-b-2 border-black">
+                {block.headers.map((h, i) => (
+                  <th
+                    key={i}
+                    className="text-left px-4 py-3 text-sm md:text-base font-medium tracking-wide"
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, i) => (
+                <tr key={i} className="border-b border-gray-200">
+                  {row.map((cell, j) => (
+                    <td
+                      key={j}
+                      className="px-4 py-3 text-sm md:text-base font-light text-gray-700"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
     default:
       return null;
@@ -86,9 +134,14 @@ export function ArticleDetail({ article, kind, onBack }: ArticleDetailProps) {
           whileHover={{ gap: 12 }}
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
-          <span>{kind === 'news' ? 'News 一覧へ戻る' : 'Journal 一覧へ戻る'}</span>
+          <span>{backLabel[kind]}</span>
         </motion.button>
 
         {/* Header */}
@@ -98,27 +151,42 @@ export function ArticleDetail({ article, kind, onBack }: ArticleDetailProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-4 text-sm mb-6">
-            <span className="text-gray-400 tracking-wider font-light">{article.date}</span>
-            <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-            <span className="px-4 py-1.5 bg-black text-white text-xs tracking-wider uppercase rounded-full">
-              {article.category}
-            </span>
-          </div>
+          {(article.date || article.category) && (
+            <div className="flex items-center gap-4 text-sm mb-6">
+              {article.date && (
+                <span className="text-gray-400 tracking-wider font-light">{article.date}</span>
+              )}
+              {article.date && article.category && (
+                <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+              )}
+              {article.category && (
+                <span className="px-4 py-1.5 bg-black text-white text-xs tracking-wider uppercase rounded-full">
+                  {article.category}
+                </span>
+              )}
+            </div>
+          )}
           <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-tight">
             {article.title}
           </h1>
+          {article.subtitle && (
+            <p className="mt-4 text-lg md:text-xl font-light text-gray-600">
+              {article.subtitle}
+            </p>
+          )}
         </motion.header>
 
-        {/* Hero image */}
-        <motion.div
-          className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-16 bg-gradient-to-br from-gray-100 to-gray-50"
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
-        </motion.div>
+        {/* Hero image (only if provided) */}
+        {article.image && (
+          <motion.div
+            className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-16 bg-gradient-to-br from-gray-100 to-gray-50"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+          </motion.div>
+        )}
 
         {/* Body */}
         <motion.div
@@ -137,9 +205,14 @@ export function ArticleDetail({ article, kind, onBack }: ArticleDetailProps) {
             className="group inline-flex items-center gap-2 text-[15px] font-medium tracking-wide text-black hover:gap-3 transition-all"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
-            <span>{kind === 'news' ? 'News 一覧へ戻る' : 'Journal 一覧へ戻る'}</span>
+            <span>{backLabel[kind]}</span>
           </button>
         </div>
       </div>

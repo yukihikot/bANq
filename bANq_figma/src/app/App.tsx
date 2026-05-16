@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { ArticleDetail } from './components/ArticleDetail';
 import { newsArticles } from './data/news';
 import { journalArticles } from './data/journal';
+import { ipDetailArticle, cpDetailArticle } from './data/sections';
 
 export type Page =
   | 'home'
@@ -20,7 +21,9 @@ export type Page =
   | 'collection'
   | 'shop'
   | 'news-detail'
-  | 'journal-detail';
+  | 'journal-detail'
+  | 'ip-detail'
+  | 'cp-detail';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -45,25 +48,39 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
+  const openIPDetail = () => {
+    setCurrentPage('ip-detail');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const openCPDetail = () => {
+    setCurrentPage('cp-detail');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
   const closeArticle = () => {
-    const fromKind = currentPage === 'news-detail' ? 'news' : 'journal';
+    const from = currentPage;
     setSelectedArticleId(null);
-    if (fromKind === 'news') {
-      setCurrentPage('news');
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    } else {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const el = document.getElementById('journal');
+    setCurrentPage('home');
+
+    let scrollTargetId: string | null = null;
+    if (from === 'news-detail') scrollTargetId = 'news';
+    else if (from === 'journal-detail') scrollTargetId = 'journal';
+    else if (from === 'ip-detail') scrollTargetId = 'ip';
+    else if (from === 'cp-detail') scrollTargetId = 'cp';
+
+    setTimeout(() => {
+      if (scrollTargetId) {
+        const el = document.getElementById(scrollTargetId);
         if (el) {
           const offsetTop = el.offsetTop - 96;
           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
-      }, 50);
-    }
+      }
+    }, 50);
   };
 
-  // 記事詳細ページ
+  // 記事詳細ページ (News)
   if (currentPage === 'news-detail' && selectedArticleId) {
     const article = newsArticles.find((a) => a.id === selectedArticleId);
     if (article) {
@@ -77,6 +94,7 @@ export default function App() {
     }
   }
 
+  // 記事詳細ページ (Journal)
   if (currentPage === 'journal-detail' && selectedArticleId) {
     const article = journalArticles.find((a) => a.id === selectedArticleId);
     if (article) {
@@ -90,6 +108,28 @@ export default function App() {
     }
   }
 
+  // セクション詳細ページ (IP)
+  if (currentPage === 'ip-detail') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <ArticleDetail article={ipDetailArticle} kind="ip" onBack={closeArticle} />
+        <Footer setCurrentPage={setCurrentPage} />
+      </div>
+    );
+  }
+
+  // セクション詳細ページ (CP)
+  if (currentPage === 'cp-detail') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <ArticleDetail article={cpDetailArticle} kind="cp" onBack={closeArticle} />
+        <Footer setCurrentPage={setCurrentPage} />
+      </div>
+    );
+  }
+
   // ホームページの場合は全セクションを表示
   if (currentPage === 'home') {
     return (
@@ -98,20 +138,16 @@ export default function App() {
 
         <HeroSection setActiveSection={handleSetActiveSection} />
         <div id="about">
-          <AboutSection isPreview={true} onViewMore={() => setCurrentPage('about')} />
+          <AboutSection />
         </div>
         <div id="news">
-          <NewsSection
-            isPreview={true}
-            onViewMore={() => setCurrentPage('news')}
-            onArticleClick={openNewsArticle}
-          />
+          <NewsSection onArticleClick={openNewsArticle} />
         </div>
         <div id="ip">
-          <IPSection />
+          <IPSection onReadMore={openIPDetail} />
         </div>
         <div id="cp">
-          <CPSection />
+          <CPSection onReadMore={openCPDetail} />
         </div>
         <div id="journal">
           <JournalSection onArticleClick={openJournalArticle} />
@@ -128,16 +164,14 @@ export default function App() {
     );
   }
 
-  // 詳細ページ
+  // その他の詳細ページ（about/news/collection/shop の単独ページ）
   return (
     <div className="min-h-screen bg-white">
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      {currentPage === 'about' && <AboutSection isPreview={false} />}
-      {currentPage === 'news' && (
-        <NewsSection isPreview={false} onArticleClick={openNewsArticle} />
-      )}
-      {currentPage === 'collection' && <IPSection isPreview={false} />}
+      {currentPage === 'about' && <AboutSection />}
+      {currentPage === 'news' && <NewsSection onArticleClick={openNewsArticle} />}
+      {currentPage === 'collection' && <IPSection onReadMore={openIPDetail} />}
       {currentPage === 'shop' && <ShopSection isPreview={false} />}
 
       <Footer setCurrentPage={setCurrentPage} />
