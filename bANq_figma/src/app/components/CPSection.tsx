@@ -111,10 +111,10 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group"
+              className="group h-full"
             >
               <motion.div
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
                 whileHover={{ y: -8 }}
               >
                 {/* Image */}
@@ -130,7 +130,7 @@ export function CPSection({ onReadMore }: CPSectionProps = {}) {
                 </div>
 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 flex-1 flex flex-col">
                   <h3 className="text-xl font-medium mb-4 group-hover:text-amber-600 transition-colors duration-300">
                     {item.title}
                   </h3>

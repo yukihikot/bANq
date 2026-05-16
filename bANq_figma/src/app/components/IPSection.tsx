@@ -100,7 +100,7 @@ export function IPSection({ onReadMore }: IPSectionProps = {}) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.12 }}
-              className="group"
+              className="group h-full"
             >
               <motion.div
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
