@@ -71,17 +71,6 @@ export function JournalSection({ onArticleClick }: JournalSectionProps = {}) {
                     transition={{ duration: 0.8 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  
-                  {/* Category Badge */}
-                  <motion.div 
-                    className="absolute top-4 right-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-800"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                  >
-                    {item.category}
-                  </motion.div>
                 </div>
 
                 {/* Content */}

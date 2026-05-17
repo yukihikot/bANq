@@ -5,7 +5,6 @@ export const journalArticles: Article[] = [
     id: 'first-ipcp',
     title: 'はじめての「IP」「CP」',
     date: '2026.03',
-    category: '入門',
     excerpt:
       'bANq はシンプルに言うと IP と CP を扱う会社です。そもそも IP や CP とは何かを、ギターと音楽を例に端的にお伝えします。',
     image: 'https://images.unsplash.com/photo-1696245843980-79b69e076ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0d28lMjBhY291c3RpYyUyMGd1aXRhcnMlMjBkYXJrJTIwbW9vZHl8ZW58MXx8fHwxNzcxOTQ0MTc1fDA&ixlib=rb-4.1.0&q=80&w=1080',
@@ -77,7 +76,6 @@ export const journalArticles: Article[] = [
     id: 'does-guitar-grow',
     title: 'ギターは「育つ」のか？',
     date: '2026.03',
-    category: 'コラム',
     excerpt:
       '新品のギターより古いギターの方が良い音がする──ギター弾きの世界でよく聞く話。なぜそんなことが起こるのか、木材・振動の記憶・人との関係から考えます。',
     image: 'https://images.unsplash.com/photo-1696245843980-79b69e076ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
@@ -108,7 +106,6 @@ export const journalArticles: Article[] = [
     id: 'value-in-time',
     title: '価値は時間の中で生まれる',
     date: '2026.03',
-    category: 'エッセイ',
     excerpt:
       '古い楽器、古いレコード、一枚のイラスト。共通しているのは「価値が時間の中で形づくられていく」ということ。数字だけでは測れない、文化的な価値について。',
     image: 'https://images.unsplash.com/photo-1762704452358-1a65ea252529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',

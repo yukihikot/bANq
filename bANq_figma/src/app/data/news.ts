@@ -7,7 +7,6 @@ export const newsArticles: Article[] = [
     id: 'banquest-start',
     title: 'BANQUE(S)T 制作開始のお知らせ',
     date: '2026.04',
-    category: 'Project',
     excerpt:
       'bANq の最初の IP プロジェクトとして、musiqman Jr. 氏による音楽作品「BANQUE(S)T」の制作を開始しました。',
     image: news2Image,
@@ -34,7 +33,6 @@ export const newsArticles: Article[] = [
     id: 'banq-start',
     title: 'bANq 始動のお知らせ',
     date: '2026.03',
-    category: 'Announcement',
     excerpt:
       'bANq は、音楽・アート・デザインを横断し、知的資産（IP）と文化資産（CP）を運用するプロジェクトとして始動しました。',
     image: news1Image,
