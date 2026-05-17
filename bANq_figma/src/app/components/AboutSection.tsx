@@ -124,13 +124,56 @@ export function AboutSection(_props: AboutSectionProps = {}) {
                 また、アコースティックギターの評価・AIアプリ開発、コミュニティやアナログイベントの企画・運営など、文化が継続するための仕組みづくりも行っています。
               </motion.p>
             </div>
+          </motion.div>
 
-            <motion.div 
-              className="pt-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+          {/* Right Column - Mission + Philosophy */}
+          <div className="space-y-12">
+            {/* Mission */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div
+                className="absolute -inset-4 bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 rounded-3xl -z-10"
+                animate={{
+                  rotate: [0, 3, 0],
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="p-10 md:p-12 bg-white rounded-2xl shadow-xl"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mb-6">
+                  <motion.div
+                    className="w-16 h-1 bg-black rounded-full mb-6"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  />
+                  <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-6">Our Mission</h2>
+                </div>
+                <p className="text-xl font-light leading-relaxed text-gray-800 mb-6">
+                  私たちの使命は、価値を消費するのではなく、守り、育て、次の時代へと手渡すことです。
+                </p>
+                <p className="text-lg font-light leading-relaxed text-gray-600 italic mb-4">
+                  Our mission is not to consume value, but to steward it and carry it forward.
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* Philosophy */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15 }}
             >
               <motion.div
                 className="p-10 md:p-12 bg-white rounded-2xl shadow-xl"
@@ -155,47 +198,6 @@ export function AboutSection(_props: AboutSectionProps = {}) {
                 </p>
                 <p className="text-lg font-light leading-relaxed text-gray-600">
                   bANqは、文化と社会をつなぐ価値の窓口として、託されたものを未来へ手渡す役割を担います。
-                </p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column - Mission Statement */}
-          <div className="lg:sticky lg:top-32">
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div 
-                className="absolute -inset-4 bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 rounded-3xl -z-10"
-                animate={{ 
-                  rotate: [0, 3, 0],
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div 
-                className="p-10 md:p-12 bg-white rounded-2xl shadow-xl"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="mb-6">
-                  <motion.div 
-                    className="w-16 h-1 bg-black rounded-full mb-6"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                  />
-                  <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-6">Our Mission</h2>
-                </div>
-                <p className="text-xl font-light leading-relaxed text-gray-800 mb-6">
-                  私たちの使命は、価値を消費するのではなく、守り、育て、次の時代へと手渡すことです。
-                </p>
-                <p className="text-lg font-light leading-relaxed text-gray-600 italic mb-4">
-                  Our mission is not to consume value, but to steward it and carry it forward.
                 </p>
               </motion.div>
             </motion.div>
