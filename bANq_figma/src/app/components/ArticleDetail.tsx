@@ -22,8 +22,8 @@ function renderBlock(block: ArticleBlock, idx: number) {
       const level = block.level ?? 2;
       const className =
         level === 2
-          ? 'text-2xl md:text-3xl font-light tracking-wide text-center mt-16 mb-10'
-          : 'text-xl md:text-2xl font-medium tracking-tight mt-12 mb-6';
+          ? 'text-xl md:text-2xl font-medium tracking-wide text-center mt-14 mb-8'
+          : 'text-lg md:text-xl font-medium tracking-tight mt-10 mb-5';
       return (
         <h3 key={idx} className={className}>
           {block.text}
@@ -36,7 +36,7 @@ function renderBlock(block: ArticleBlock, idx: number) {
           key={idx}
           className={`leading-relaxed font-light whitespace-pre-wrap ${
             block.emphasis
-              ? 'text-xl md:text-2xl font-medium text-black my-8'
+              ? 'text-lg md:text-xl font-medium text-black my-6'
               : 'text-base md:text-lg text-gray-700 my-4'
           }`}
         >
@@ -60,19 +60,17 @@ function renderBlock(block: ArticleBlock, idx: number) {
       return (
         <div
           key={idx}
-          className="my-10 border-l-2 border-black pl-6 py-2 text-lg md:text-xl font-medium tracking-wide"
+          className="my-8 border-l-2 border-gray-800 pl-5 py-1 text-base md:text-lg font-medium tracking-wide"
         >
-          ■ {block.text}
+          {block.text}
         </div>
       );
     case 'divider':
       return (
-        <div
+        <hr
           key={idx}
-          className="flex justify-center my-10 text-gray-400 tracking-widest text-sm"
-        >
-          ↓↓↓
-        </div>
+          className="my-10 border-0 border-t border-gray-200 max-w-[80px] mx-auto"
+        />
       );
     case 'note':
       return (
