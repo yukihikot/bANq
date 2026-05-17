@@ -132,26 +132,28 @@ export function AboutSection(_props: AboutSectionProps = {}) {
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
             >
-              <motion.div 
-                className="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 relative overflow-hidden group"
-                whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+              <motion.div
+                className="p-10 md:p-12 bg-white rounded-2xl shadow-xl"
+                whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.div 
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.8, duration: 1 }}
-                />
-                <h3 className="text-xl font-medium mb-4 tracking-wide">Our Philosophy</h3>
-                <p className="text-gray-600 leading-relaxed font-light mb-4">
+                <div className="mb-6">
+                  <motion.div
+                    className="w-16 h-1 bg-black rounded-full mb-6"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  />
+                  <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-6">Our Philosophy</h2>
+                </div>
+                <p className="text-xl font-light leading-relaxed text-gray-800 mb-6">
                   Stewardship（スチュワードシップ）とは、価値あるものを「所有」するのではなく、一時的に託され、守り、育て、次の時代へ引き渡す責任を引き受ける姿勢を指します。
                 </p>
-                <p className="text-gray-600 leading-relaxed font-light mb-4">
+                <p className="text-lg font-light leading-relaxed text-gray-600 mb-4">
                   bANqが扱うIP（知的財産）やCP（文化資産）は、時間と関与によって価値が変化する存在です。私たちはそれらを消費や投機の対象としてではなく、継続と信頼によって育つ資産として管理・運用・育成します。
                 </p>
-                <p className="text-gray-600 leading-relaxed font-light">
+                <p className="text-lg font-light leading-relaxed text-gray-600">
                   bANqは、文化と社会をつなぐ価値の窓口として、託されたものを未来へ手渡す役割を担います。
                 </p>
               </motion.div>
