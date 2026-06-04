@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface NavigationProps {
   currentPage: string;
@@ -118,8 +118,11 @@ export function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-3 hover:bg-gray-50 rounded-lg transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            type="button"
+            aria-label="メニュー"
+            aria-expanded={isMenuOpen}
+            className="lg:hidden p-3 hover:bg-gray-50 rounded-lg transition-colors relative z-10"
+            onClick={() => setIsMenuOpen((open) => !open)}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`block h-0.5 w-full bg-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -130,32 +133,35 @@ export function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
         </div>
 
         {/* Mobile Menu */}
-        <motion.div 
-          initial={false}
-          animate={{ 
-            height: isMenuOpen ? 'auto' : 0,
-            opacity: isMenuOpen ? 1 : 0 
-          }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden"
-        >
-          <div className="py-6 space-y-1 border-t border-gray-100">
-            {menuItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left py-4 px-4 rounded-lg text-[15px] font-medium tracking-wide transition-all ${
-                  currentPage === item.id 
-                    ? 'text-black bg-gray-50' 
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-                whileHover={{ x: 4 }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+        <AnimatePresence initial={false}>
+          {isMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden"
+            >
+              <div className="py-6 space-y-1 border-t border-gray-100">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleNavClick(item.id)}
+                    className={`block w-full text-left py-4 px-4 rounded-lg text-[15px] font-medium tracking-wide transition-all ${
+                      currentPage === item.id
+                        ? 'text-black bg-gray-50'
+                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

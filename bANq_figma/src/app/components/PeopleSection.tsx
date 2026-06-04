@@ -5,7 +5,7 @@ import jNosukeImg from '../../assets/people/j-nosuke.jpg';
 
 const custodians = [
   {
-    image: sIchiroImg,
+    image: jNosukeImg,
     name: 'S-ichiro',
     role: 'Strategic',
     field: 'Structure / Systems',
@@ -13,7 +13,7 @@ const custodians = [
       'IP/CP の構造設計、戦略設計、運用システムを担当。文化資産を継続可能な形で社会へ接続するための基盤構築を行う。',
   },
   {
-    image: jNosukeImg,
+    image: sIchiroImg,
     name: 'J-nosuke',
     role: 'Creative',
     field: 'Music / Culture',
