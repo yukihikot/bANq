@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import banquestImg from '../../assets/other/nagai-collab.jpg';
+import banquestImg from '../../assets/jackets/banquest.jpg';
 
 interface ShopSectionProps {
   isPreview?: boolean;

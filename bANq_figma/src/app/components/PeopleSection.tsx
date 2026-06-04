@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import juniorImg from '../../assets/people/junior.jpg';
 import sIchiroImg from '../../assets/people/s-ichiro.jpg';
 import jNosukeImg from '../../assets/people/j-nosuke.jpg';
@@ -23,6 +24,8 @@ const custodians = [
 ];
 
 export function PeopleSection() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section
       id="people"
@@ -43,7 +46,7 @@ export function PeopleSection() {
       <div className="max-w-[1400px] mx-auto px-8 lg:px-16 relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -54,8 +57,36 @@ export function PeopleSection() {
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
             bANq を形づくる人々
           </p>
+
+          {!expanded && (
+            <motion.button
+              onClick={() => setExpanded(true)}
+              className="mt-10 inline-flex items-center gap-2 text-[15px] font-medium tracking-wide text-black"
+              whileHover={{ gap: 12 }}
+            >
+              <span>Read More</span>
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </motion.button>
+          )}
         </motion.div>
 
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              key="people-detail"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4 }}
+              className="mt-12"
+            >
         {/* The Core */}
         <motion.div
           className="max-w-5xl mx-auto mb-28"
@@ -160,6 +191,27 @@ export function PeopleSection() {
             ))}
           </div>
         </motion.div>
+
+              <div className="mt-20 text-center">
+                <motion.button
+                  onClick={() => setExpanded(false)}
+                  className="inline-flex items-center gap-2 text-[15px] font-medium tracking-wide text-gray-500 hover:text-black"
+                  whileHover={{ gap: 12 }}
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 15l7-7 7 7"
+                    />
+                  </svg>
+                  <span>Close</span>
+                </motion.button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
