@@ -62,7 +62,7 @@ export function PeopleSection() {
             <motion.button
               onClick={() => setExpanded(true)}
               className="mt-10 inline-flex items-center gap-2 text-[15px] font-medium tracking-wide text-black"
-              whileHover={{ gap: 12 }}
+              whileHover={{ y: 2 }}
             >
               <span>Read More</span>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,7 +70,7 @@ export function PeopleSection() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  d="M19 9l-7 7-7-7"
                 />
               </svg>
             </motion.button>
