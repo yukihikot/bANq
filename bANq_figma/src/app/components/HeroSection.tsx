@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import recordShopImg from '../../assets/jackets/record-shop.jpg';
-import snowMountainImg from '../../assets/jackets/snow-mountain.jpg';
-import landscapeImg from '../../assets/jackets/landscape.jpg';
+import studioImg from '../../assets/hero/studio.jpg';
+import workshopImg from '../../assets/hero/workshop.jpg';
+import galleryImg from '../../assets/hero/gallery.jpg';
+import nagaiCollabImg from '../../assets/other/nagai-collab.jpg';
 
 interface HeroSectionProps {
   setActiveSection: (section: string) => void;
 }
 
 const slides = [
-  { src: recordShopImg, alt: 'Record Shop' },
-  { src: snowMountainImg, alt: 'Snow Mountain' },
-  { src: landscapeImg, alt: 'Landscape' },
+  { src: studioImg, alt: 'Recording Studio' },
+  { src: workshopImg, alt: 'Guitar Workshop' },
+  { src: galleryImg, alt: 'Hiroshi Nagai Gallery' },
+  { src: nagaiCollabImg, alt: 'Hiroshi Nagai Collaboration' },
 ];
 
 export function HeroSection({ setActiveSection: _setActiveSection }: HeroSectionProps) {

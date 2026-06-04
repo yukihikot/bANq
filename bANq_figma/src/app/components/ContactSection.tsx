@@ -76,9 +76,19 @@ export function ContactSection() {
             <div className="h-px w-full bg-gradient-to-r from-gray-300 to-transparent mt-2"></div>
           </div>
           <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-8">Contact</h1>
-          <p className="text-xl md:text-2xl font-light text-gray-600 max-w-3xl leading-relaxed">
-            委託管理のご相談、IP/CPコラボレーション、取材・お問い合わせなど、
-            <br className="hidden md:inline" />
+          <div className="flex flex-wrap gap-3 mb-6">
+            {['IP / CP のご相談', '楽器運用について', 'コラボレーション', 'イベント', '取材  etc'].map(
+              (tag) => (
+                <span
+                  key={tag}
+                  className="inline-block px-5 py-2 rounded-full border border-gray-300 text-sm md:text-base font-light text-gray-700 tracking-wide"
+                >
+                  {tag}
+                </span>
+              )
+            )}
+          </div>
+          <p className="text-lg md:text-xl font-light text-gray-600 max-w-3xl leading-relaxed">
             以下のフォームよりお気軽にご連絡ください。
           </p>
         </div>
@@ -213,40 +223,38 @@ export function ContactSection() {
           <div className="lg:col-span-2">
             <div className="lg:sticky lg:top-32 space-y-8">
               {/* Contact Details */}
-              <div className="p-8 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <h3 className="text-xl font-medium mb-6 tracking-wide">Contact Information</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full flex-shrink-0">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500 mb-1 font-light">Address</div>
-                      <div className="font-light leading-relaxed">
-                        〒104-0061
-                        <br />
-                        東京都中央区銀座1丁目12番4号
-                        <br />
-                        N&amp;E BLD. 6F
-                      </div>
+              <div className="p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
+                <h3 className="text-base font-medium mb-4 tracking-wide">Contact Information</h3>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full flex-shrink-0">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-500 mb-1 font-light">Address</div>
+                    <div className="text-sm font-light leading-relaxed">
+                      〒104-0061
+                      <br />
+                      東京都中央区銀座1丁目12番4号
+                      <br />
+                      N&amp;E BLD. 6F
                     </div>
                   </div>
                 </div>

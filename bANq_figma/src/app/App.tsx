@@ -7,6 +7,7 @@ import { IPSection } from './components/IPSection';
 import { CPSection } from './components/CPSection';
 import { JournalSection } from './components/JournalSection';
 import { ShopSection } from './components/ShopSection';
+import { PeopleSection } from './components/PeopleSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ArticleDetail } from './components/ArticleDetail';
@@ -193,6 +194,9 @@ export default function App() {
         </div>
         <div id="shop">
           <ShopSection isPreview={true} onViewMore={() => setCurrentPage('shop')} />
+        </div>
+        <div id="people">
+          <PeopleSection />
         </div>
         <div id="contact">
           <ContactSection />

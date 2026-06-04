@@ -25,6 +25,7 @@ export function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
     { id: 'cp', label: 'CP' },
     { id: 'journal', label: 'Journal' },
     { id: 'shop', label: 'Shop' },
+    { id: 'people', label: 'People' },
     { id: 'contact', label: 'Contact' },
   ];
 

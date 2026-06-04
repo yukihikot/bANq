@@ -1,4 +1,11 @@
 import type { Article } from './types';
+import nagaiBooksImg from '../../assets/ip/nagai-books.jpg';
+import nagaiPortraitImg from '../../assets/ip/nagai-portrait.jpg';
+import cpLineupImg from '../../assets/cp/lineup.jpg';
+import cpMapleImg from '../../assets/cp/maple.jpg';
+import cpTop1Img from '../../assets/cp/top1.jpg';
+import cpTop2Img from '../../assets/cp/top2.jpg';
+import cpCasesImg from '../../assets/cp/cases.jpg';
 
 export const ipDetailArticle: Article = {
   id: 'ip-detail',
@@ -32,6 +39,14 @@ export const ipDetailArticle: Article = {
     {
       type: 'paragraph',
       text: 'フィジカルおよびデジタル双方において、適切なフォーマットと流通設計を行う。',
+    },
+    { type: 'lead', text: 'Placement / Connection / Continuation' },
+    {
+      type: 'gallery',
+      images: [
+        { src: nagaiBooksImg, caption: 'Hiroshi Nagai — Works' },
+        { src: nagaiPortraitImg, caption: 'Hiroshi Nagai' },
+      ],
     },
     { type: 'divider' },
     { type: 'heading', level: 2, text: 'IP と CP の対比' },
@@ -100,6 +115,10 @@ export const cpDetailArticle: Article = {
     { type: 'heading', level: 2, text: 'Guitar Growth Program／育成・観測' },
     { type: 'paragraph', emphasis: true, text: 'Focus：Future Potential' },
     {
+      type: 'lead',
+      text: '「ギターは完成した音ではなく、\n育っていく過程そのものに価値がある。」',
+    },
+    {
       type: 'paragraph',
       text: '「ギターの変化を数値化し、成長していく過程そのものを理解・記録する。完成した音ではなく、育っていく過程を観測する。」',
     },
@@ -128,6 +147,48 @@ export const cpDetailArticle: Article = {
     {
       type: 'paragraph',
       text: 'コンディションを保つために、アーティストやスタジオミュージシャン、bANq チームによる積極的な音響調整・エイジングを行います。日本を代表するギタリストによるエイジングも行います。またギター音響評価アプリも開発中です。',
+    },
+    {
+      type: 'gallery',
+      images: [
+        { src: cpLineupImg },
+        { src: cpMapleImg },
+        { src: cpTop1Img },
+        { src: cpTop2Img },
+        { src: cpCasesImg },
+      ],
+    },
+    { type: 'divider' },
+    { type: 'heading', level: 2, text: 'Observation Log' },
+    {
+      type: 'paragraph',
+      text: '※ 各ギターの記録は Instagram にて公開しています（See Instagram for these guitars）',
+    },
+    {
+      type: 'table',
+      headers: ['Model', 'Phase', 'Observation'],
+      rows: [
+        [
+          'Martin 000-18 Authentic 1937 (2007)',
+          'Late Growth ／ 6.5/10',
+          'Mid range stabilized',
+        ],
+        [
+          'Martin 000-30H Authentic 1919 (2018)',
+          'Developing ／ 3.5/10',
+          'Harmonic response increasing',
+        ],
+        [
+          'Martin 000C-16RB Babyface Signature (2000)',
+          'Developing ／ 6/10',
+          'Low-end response tightening. Midrange articulation becoming clearer',
+        ],
+        [
+          'Martin OM-28 Marquis (2012)',
+          'Developing ／ 5/10',
+          'Harmonic balance stabilizing. Dynamic range expanding under light touch',
+        ],
+      ],
     },
   ],
 };

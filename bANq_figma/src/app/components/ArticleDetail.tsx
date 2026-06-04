@@ -30,6 +30,15 @@ function renderBlock(block: ArticleBlock, idx: number) {
         </h3>
       );
     }
+    case 'lead':
+      return (
+        <p
+          key={idx}
+          className="my-14 text-center text-2xl md:text-3xl font-light leading-relaxed tracking-wide text-black whitespace-pre-wrap"
+        >
+          {block.text}
+        </p>
+      );
     case 'paragraph':
       return (
         <p
@@ -80,6 +89,40 @@ function renderBlock(block: ArticleBlock, idx: number) {
         >
           ※ {block.text}
         </p>
+      );
+    case 'image':
+      return (
+        <figure key={idx} className="my-12">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-gray-100 to-gray-50">
+            <img src={block.src} alt={block.caption ?? ''} className="w-full h-auto object-cover" />
+          </div>
+          {block.caption && (
+            <figcaption className="mt-3 text-center text-sm text-gray-500 font-light">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    case 'gallery':
+      return (
+        <div key={idx} className="my-12 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {block.images.map((img, i) => (
+            <figure key={i} className="m-0">
+              <div className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-gradient-to-br from-gray-100 to-gray-50">
+                <img
+                  src={img.src}
+                  alt={img.caption ?? ''}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {img.caption && (
+                <figcaption className="mt-2 text-center text-xs text-gray-500 font-light">
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
       );
     case 'table':
       return (
